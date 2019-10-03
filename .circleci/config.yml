@@ -9,7 +9,7 @@ jobs:
 
       - run:
           name: Version information
-          command: rustc --version; cargo --version; rustup --version
+          command: rustc --version; cargo --version; rustup --version; rustfmt --version
 
       - run:
           name: Print the Current Time
