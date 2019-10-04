@@ -9,9 +9,20 @@ jobs:
 
       - run:
           name: Version information
-          command: rustc --version; cargo --version; rustup --version; rustfmt --version
+          command: |
+            rustup --version
+            rustc --version
+            cargo --version
 
       - run:
-          name: Print the Current Time
-          command: date
+          name: Calculate dependencies
+          command: test -e Cargo.local || cargo generate-lockfile
+      - run:
+          name: Check formatting
+          command: |
+            if rustup component add rustfmt; then
+              cargo fmt --all -- --check
+            else
+              echo Skipping rustfmt
+            fi
 
