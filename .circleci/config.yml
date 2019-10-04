@@ -1,6 +1,8 @@
 version: 2.1
 jobs:
   build:
+    working_directory: ~/project/hello
+
     docker:
       - image: circleci/rust
 
