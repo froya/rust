@@ -21,5 +21,6 @@ jobs:
 
       - run:
           name: Build
+          working_directory: hello
           command: |
             cargo build
