@@ -18,3 +18,8 @@ jobs:
           name: Check formatting
           command: cargo fmt --all -- --check
           working_directory: hello
+
+      - run:
+          name: Build
+          command: |
+            cargo build
