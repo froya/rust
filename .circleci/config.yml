@@ -1,8 +1,6 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/project/hello
-
     docker:
       - image: circleci/rust
 
@@ -17,14 +15,6 @@ jobs:
             cargo --version
 
       - run:
-          name: Calculate dependencies
-          command: test -e Cargo.local || cargo generate-lockfile
-      - run:
           name: Check formatting
-          command: |
-            if rustup component add rustfmt; then
-              cargo fmt --all -- --check
-            else
-              echo Skipping rustfmt
-            fi
-
+          command: cargo fmt --all -- --check
+          working_directory: hello
